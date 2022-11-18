@@ -181,7 +181,7 @@
             "patterns": [
                 {
                     "comments": "SRTP syntax support",
-                    "begin": "(:)\\s*(\\()\\s*(static member|member)",
+                    "begin": "(:)\\s*(\\()\\s*(static member|member|статичний член|член)",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -237,7 +237,7 @@
                 },
                 {
                     "name": "keyword.fsharp",
-                    "match": "\\b(private|to|public|internal|function|yield!|yield|class|exception|match|delegate|of|new|in|as|if|then|else|elif|for|begin|end|inherit|do|let\\!|return\\!|return|interface|with|abstract|enum|member|try|finally|and|when|or|use|use\\!|struct|while|mutable|assert|base|done|downcast|downto|extern|fixed|global|lazy|upcast|not)(?!')\\b"
+                    "match": "\\b(private|приватний|to|до|public|відкритий|internal|внутрішній|function|функція|yield!|поступатися!|yield|поступатися|class|клас|exception|виключення|match|відповідає|delegate|делегат|of|з|new|новий|in|у|as|як|if|якщо|then|тоді|else|інакше|elif|інякщо|for|для|begin|початок|end|кінець|inherit|успадкує|do|зробити|let\\!|нехай\\!|return\\!|повернути\\!|return|повернути|interface|інтерфейс|with|із|abstract|абстрактний|enum|member|член|try|спробувати|finally|востаннє|and|та|when|коли|or|або|use|вживати|use\\!|вживати\\!|struct|структ|while|доки|mutable|змінливий|assert|ствердити|base|база|done|зроблено|downcast|downto|extern|зовнішній|fixed|фіксовано|global|глобальний|lazy|upcast|not)(?!')\\b"
                 },
                 {
                     "name": "keyword.fsharp",
@@ -466,7 +466,7 @@
             "patterns": [
                 {
                     "name": "function.anonymous",
-                    "begin": "\\b(fun)\\b",
+                    "begin": "\\b(fun|фун)\\b",
                     "end": "(->)",
                     "beginCaptures": {
                         "1": {
@@ -619,18 +619,18 @@
                 },
                 {
                     "name": "constant.language.boolean.fsharp",
-                    "match": "\\b(true|false)\\b"
+                    "match": "\\b(true|істина|false|ложь)\\b"
                 },
                 {
                     "name": "constant.other.fsharp",
-                    "match": "\\b(null|unit|void)\\b"
+                    "match": "\\b(null|нуль|unit|void|пусто)\\b"
                 }
             ]
         },
         "abstract_definition": {
             "name": "abstract.definition.fsharp",
-            "begin": "\\b(abstract)\\s+(member)?(\\s+\\[\\<.*\\>\\])?\\s*([_[:alpha:]0-9,\\._`\\s]+)(:)",
-            "end": "\\s*(with)\\b|=|$",
+            "begin": "\\b(abstract|абстрактний)\\s+(member|член)?(\\s+\\[\\<.*\\>\\])?\\s*([_[:alpha:]0-9,\\._`\\s]+)(:)",
+            "end": "\\s*(with|із)\\b|=|$",
             "beginCaptures": {
                 "1": {
                     "name": "keyword.fsharp"
@@ -675,7 +675,7 @@
                     }
                 },
                 {
-                    "match": "(?!with|get|set\\b)\\b([\\w0-9'`^._]+)",
+                    "match": "(?!with|із|get|set\\b)\\b([\\w0-9'`^._]+)",
                     "comments": "Here we need the \\w modifier in order to check that the words isn't blacklisted",
                     "captures": {
                         "1": {
@@ -698,7 +698,7 @@
                 },
                 {
                     "comments": "SRTP syntax support",
-                    "begin": "(:)\\s*(\\()\\s*(static member|member)",
+                    "begin": "(:)\\s*(\\()\\s*(static member|статичний член|member|член)",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -759,7 +759,7 @@
                     ]
                 },
                 {
-                    "begin": "(:)\\s*(\\^[[:alpha:]0-9'._]+)\\s*(when)",
+                    "begin": "(:)\\s*(\\^[[:alpha:]0-9'._]+)\\s*(when|коли)",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -780,7 +780,7 @@
                     "patterns": [
                         {
                             "name": "keyword.fsharp",
-                            "match": "\\b(and|when|or)\\b"
+                            "match": "\\b(and|та|when|коли|or|або)\\b"
                         },
                         {
                             "comment": "Because we first capture the keywords, we can capture what looks like a word and assume it's an entity definition",
@@ -927,7 +927,7 @@
             "patterns": [
                 {
                     "name": "binding.fsharp",
-                    "begin": "\\b(let mutable|static let mutable|static let|let inline|let|and|member val|static member inline|static member|default|member|override|let!)(\\s+rec|mutable)?(\\s+\\[\\<.*\\>\\])?\\s*(private|internal|public)?\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
+                    "begin": "\\b(let mutable|нехай змінливий|static let mutable|статичний нехай змінливий|static let|статичний нехай|let inline|нехай інлайн|let|нехай|and|та|member val|член знач|static member inline|статичний член інлайн|static member|статичний член|default|замовчання|member|член|override|перевизначити|let!|нехай!)(\\s+rec|рек|mutable|змінливий)?(\\s+\\[\\<.*\\>\\])?\\s*(private|приватний|internal|внутрішній|public|відкритий)?\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
                     "end": "\\s*(with\\b|=|\\n+=|(?<=\\=))",
                     "beginCaptures": {
                         "1": {
@@ -959,7 +959,7 @@
                 },
                 {
                     "name": "binding.fsharp",
-                    "begin": "\\b(use|use!|and|and!)\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
+                    "begin": "\\b(use|вживати|use!|вживати!|and|та|and!|та!)\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
                     "end": "\\s*(=)",
                     "beginCaptures": {
                         "1": {
@@ -979,7 +979,7 @@
                 },
                 {
                     "name": "binding.fsharp",
-                    "begin": "(?<=with|and)\\s*\\b((get|set)\\s*(?=\\())(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
+                    "begin": "(?<=with|із|and|та)\\s*\\b((get|set)\\s*(?=\\())(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9\\._`\\s]+|(?<=,)\\s)*)?",
                     "end": "\\s*(=|\\n+=|(?<=\\=))",
                     "beginCaptures": {
                         "4": {
@@ -999,7 +999,7 @@
                 },
                 {
                     "name": "binding.fsharp",
-                    "begin": "\\b(static val mutable|val mutable|val)(\\s+rec|mutable)?(\\s+\\[\\<.*\\>\\])?\\s*(private|internal|public)?\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9,\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9,\\._`\\s]+|(?<=,)\\s)*)?",
+                    "begin": "\\b(static val mutable|статичний знач змінливий|val mutable|знач змінливий|val|знач)(\\s+rec|рек|mutable|змінливий)?(\\s+\\[\\<.*\\>\\])?\\s*(private|приватний|internal|внутрішній|public|відкритий)?\\s+(\\[[^-=]*\\]|[_[:alpha:]]([_[:alpha:]0-9,\\._]+)*|``[_[:alpha:]]([_[:alpha:]0-9,\\._`\\s]+|(?<=,)\\s)*)?",
                     "end": "\\n$",
                     "beginCaptures": {
                         "1": {
@@ -1026,7 +1026,7 @@
                 },
                 {
                     "name": "binding.fsharp",
-                    "begin": "\\b(new)\\b\\s+(\\()",
+                    "begin": "\\b(new|новий)\\b\\s+(\\()",
                     "end": "(\\))",
                     "beginCaptures": {
                         "1": {
@@ -1053,7 +1053,7 @@
             "patterns": [
                 {
                     "name": "du_declaration.fsharp",
-                    "begin": "\\b(of)\\b",
+                    "begin": "\\b(of|з)\\b",
                     "end": "$|(\\|)",
                     "beginCaptures": {
                         "1": {
@@ -1105,19 +1105,19 @@
             "patterns": [
                 {
                     "name": "storage.modifier",
-                    "match": "\\b(private|public|internal)\\b"
+                    "match": "\\b(private|приватний|internal|внутрішній|public|відкритий)\\b"
                 },
                 {
                     "name": "keyword.fsharp",
-                    "match": "\\b(private|to|public|internal|function|class|exception|delegate|of|as|begin|end|inherit|let!|interface|abstract|enum|member|and|when|or|use|use\\!|struct|mutable|assert|base|done|downcast|downto|extern|fixed|global|lazy|upcast|not)(?!')\\b"
+                    "match": "\\b(private|приватний|to|до|public|відкритий|internal|внутрішній|function|функція|class|клас|exception|виключення|delegate|делегат|of|з|as|як|begin|початок|end|кінець|inherit|успадкує|let!|нехай!|interface|інтерфейс|abstract|абстрактний|enum|member|член|and|та|when|коли|or|або|use|вживати|use\\!|вживати\\!|struct|структ|mutable|змінливий|assert|ствердити|base|база|done|зроблено|downcast|downto|extern|зовнішній|fixed|фіксовано|global|глобальний|lazy|upcast|not)(?!')\\b"
                 },
                 {
                     "name": "keyword.control",
-                    "match": "\\b(match|yield|yield!|with|if|then|else|elif|for|in|return!|return|try|finally|while|do)(?!')\\b"
+                    "match": "\\b(match|відповідає|yield|поступатися|yield!|поступатися!|with|із|if|якщо|then|тоді|else|інакше|elif|інякщо|for|для|in|у|return!|повернути!|return|повернути|try|спробувати|finally|востаннє|while|доки|do|зробити)(?!')\\b"
                 },
                 {
                     "name": "keyword.symbol.new",
-                    "match": "\\b(new)\\b"
+                    "match": "\\b(new|новий)\\b"
                 },
                 {
                     "name": "keyword.symbol.fsharp",
@@ -1129,7 +1129,7 @@
             "patterns": [
                 {
                     "name": "entity.name.section.fsharp",
-                    "begin": "\\b(namespace global)|\\b(namespace|module)\\s*(public|internal|private|rec)?\\s+([[:alpha:]][[:alpha:]0-9'_. ]*)",
+                    "begin": "\\b(namespace global|простір глобальний)|\\b(namespace|простір|module|модуль)\\s*(public|відкритий|internal|внутрішній|private|приватний|rec|рек)?\\s+([[:alpha:]][[:alpha:]0-9'_. ]*)",
                     "end": "(\\s?=|\\s|$)",
                     "beginCaptures": {
                         "1": {
@@ -1167,7 +1167,7 @@
                 },
                 {
                     "name": "namespace.open.fsharp",
-                    "begin": "\\b(open type|open)\\s+([[:alpha:]][[:alpha:]0-9'_]*)(?=(\\.[A-Z][[:alpha:]0-9_]*)*)",
+                    "begin": "\\b(open type|відкрити тип|open|відкрити)\\s+([[:alpha:]][[:alpha:]0-9'_]*)(?=(\\.[A-Z][[:alpha:]0-9_]*)*)",
                     "end": "(\\s|$)",
                     "beginCaptures": {
                         "1": {
@@ -1197,7 +1197,7 @@
                 },
                 {
                     "name": "namespace.alias.fsharp",
-                    "begin": "^\\s*(module)\\s+([A-Z][[:alpha:]0-9'_]*)\\s*(=)\\s*([A-Z][[:alpha:]0-9'_]*)",
+                    "begin": "^\\s*(module|модуль)\\s+([A-Z][[:alpha:]0-9'_]*)\\s*(=)\\s*([A-Z][[:alpha:]0-9'_]*)",
                     "end": "(\\s|$)",
                     "beginCaptures": {
                         "1": {
@@ -1327,7 +1327,7 @@
                     "match": "\\(\\)"
                 },
                 {
-                    "match": "(\\?{0,1})(``[[:alpha:]0-9'`^:,._ ]+``|(?!private\\b)\\b[\\w[:alpha:]0-9'`<>^._ ]+)",
+                    "match": "(\\?{0,1})(``[[:alpha:]0-9'`^:,._ ]+``|(?!(private|приватний)\\b)\\b[\\w[:alpha:]0-9'`<>^._ ]+)",
                     "captures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -1375,7 +1375,7 @@
                     ]
                 },
                 {
-                    "match": "\\s*(->)\\s*(?!with|get|set\\b)\\b([\\w0-9'`^._]+)",
+                    "match": "\\s*(->)\\s*(?!with|із|get|set\\b)\\b([\\w0-9'`^._]+)",
                     "captures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -1439,7 +1439,7 @@
                 },
                 {
                     "comments": "SRTP syntax support",
-                    "begin": "(:)\\s*(\\()\\s*(static member|member)",
+                    "begin": "(:)\\s*(\\()\\s*(static member|статичний член|member|член)",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.symbol.fsharp"
@@ -1503,7 +1503,7 @@
                 },
                 {
                     "name": "keyword.fsharp",
-                    "match": "\\b(and|when|or)\\b"
+                    "match": "\\b(and|та|when|коли|or|або)\\b"
                 },
                 {
                     "name": "keyword.symbol.fsharp",
@@ -1554,8 +1554,8 @@
             "patterns": [
                 {
                     "name": "record.fsharp",
-                    "begin": "\\b(type)[\\s]+(private|internal|public)?\\s*",
-                    "end": "\\s*((with)|((as)\\s+([[:alpha:]0-9']+))|(=)|[\\n=]|(\\(\\)))",
+                    "begin": "\\b(type|тип)[\\s]+(private|приватний|internal|внутрішній|public|відкритий)?\\s*",
+                    "end": "\\s*((with|із)|((as|як)\\s+([[:alpha:]0-9']+))|(=)|[\\n=]|(\\(\\)))",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.fsharp"
@@ -1623,7 +1623,7 @@
                                 },
                                 {
                                     "name": "keyword.fsharp",
-                                    "match": "\\b(interface|with|abstract|and|when|or|not|struct|equality|comparison|unmanaged|delegate|enum)\\b"
+                                    "match": "\\b(interface|інтервал|with|із|abstract|абстрактний|and|і|when|коли|or|або|not|struct|структ|equality|comparison|unmanaged|delegate|делегат|enum)\\b"
                                 },
                                 {
                                     "begin": "(\\()",
@@ -1640,7 +1640,7 @@
                                     },
                                     "patterns": [
                                         {
-                                            "match": "(static member|member|new)",
+                                            "match": "(static member|статичний член|member|член|new|новий)",
                                             "captures": {
                                                 "1": {
                                                     "name": "keyword.fsharp"
@@ -1667,7 +1667,7 @@
                             ]
                         },
                         {
-                            "match": "\\s*(private|internal|public)",
+                            "match": "\\s*(private|приватний|internal|внутрішній|public|відкритий)",
                             "captures": {
                                 "1": {
                                     "name": "keyword.symbol.fsharp"
